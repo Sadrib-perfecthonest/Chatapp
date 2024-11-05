@@ -51,23 +51,23 @@
 			<header id="sidebar-header">
 				<img src="https://picsum.photos/id/10/50" alt="" class="avatar" id="profile-image">
 				<div class="toolbar">
-					<img src="icons/status.svg" alt="" class="icon">
 					<img src="icons/new-chat.svg" alt="" class="icon">
 					<div class="dropdown">
 						<img src="icons/menu.svg" alt="" class="icon dropdown-button">
 						<div class="dropdown-content">
-							<a href="#">New community</a>
-							<a href="#">Starred messages</a>
-							<a href="#">Select chats</a>
-							<a href="#">Settings</a>
-							<a href="#">Log out</a>
+							<button class= "button-community" type="button" > New Community</button>
+							<button class= "button-Starred" type="button" > Starred messages</button>
+							<button class= "button-select" type="button" > Select chats</button>
+							<button class= "button-settings" type="button" > Settings</button>
+							<button class= "button-logout" type="button" > Log out</button>
+							
 						</div>
 					</div>
 				</div>
 			</header>
 			<form id="search-toolbar">
 				<input type="search" name="" id="search-input" placeholder="Search or start a new chat">
-				<button class="button-filter" type="button"><img src="icons/filter.svg" alt="" class="icon"></button>
+				
 			</form>
 			<div class="connectivity-notification">
 				<img src="icons/warning.svg" alt="Offline warning">
@@ -158,14 +158,14 @@
 					<h3>Friends 🤗</h3>
 					<div class="info">You and 60 others</div>
 				</div>
-				<img src="icons/search.svg" alt="" class="icon">
 				<div class="dropdown">
-					<img src="icons/menu.svg" alt="" class="icon dropdown-button">
+					<button class= "icon-dropdown-button-chat" type="button" > <img src="icons/menu.svg" alt="" class="icon dropdown-button"></button>
 					<div class="dropdown-content contact-menu">
-						<a href="#">Contact info</a>
-						<a href="#">Clear messages</a>
-						<a href="#">Delete chat</a>
-						<a href="#">Block</a>
+						<button class= "button-community" type="button" > Contact info</button>
+						<button class= "button-Starred" type="button" > Delete chat</button>
+						<button class= "button-select" type="button" > Block</button>
+						
+						
 					</div>
 				</div>
 			</header>
@@ -269,7 +269,7 @@
 	<script src="scripts/file-upload.js"></script>
 	<script src="scripts/chat-interaction.js"></script>
 	<script src="scripts/sidebar-search.js"></script>
-	<script src="scripts/filter.js"></script>
+	
 	<script>
 		// Toggle between login and register screens
 		document.getElementById("go-to-register").onclick = function () {

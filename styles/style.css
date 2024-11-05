@@ -45,16 +45,45 @@ main {
   flex-direction: column;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
 }
-
-.dropdown-content a {
-  padding: 10px 16px;
+.button-community{
+  background-color: var(--primary);
+  border: none;
+  
+}
+.button-Starred{
+  background-color: var(--primary);
+  border: none;
+  
+}
+.button-select{
+  background-color: var(--primary);
+  border: none;
+  
+}
+.button-settings{
+  background-color: var(--primary);
+  border: none;
+  
+}
+.button-logout{
+  background-color: var(--primary);
+  border: none;
+  
+}
+.dropdown-content button {
+  padding: 15px 20px;
   color: var(--text-primary);
 }
 
-.dropdown-content a:hover {
+.dropdown-content button:hover {
   background-color: var(--bg-color);
 }
 
 .dropdown:hover .dropdown-content {
   display: flex;
+}
+.icon-dropdown-button-chat{
+  background-color: var(--primary);
+  border: none;
+  
 }
