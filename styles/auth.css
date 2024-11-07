@@ -9,6 +9,15 @@
 }
 
 /* Updated title styling */
+.title{
+	font-size: 29px;
+    font-weight: bold;
+    color: #4caf50;
+    margin-bottom: 25px;
+	padding-top: 10px;
+    text-align: center;
+    /* animation: glowPulse 2s ease-in-out infinite; */
+}
 .app-title {
     font-size: 32px;
     font-weight: bold;

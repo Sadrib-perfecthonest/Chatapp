@@ -45,6 +45,11 @@ main {
   flex-direction: column;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
 }
+.button-new-chat{
+  background-color: var(--primary);
+  border: none;
+  
+}
 .button-community{
   background-color: var(--primary);
   border: none;
@@ -87,3 +92,35 @@ main {
   border: none;
   
 }
+.button-Delete{
+  background-color: var(--primary);
+    border: none;    
+}
+
+/* Styling for the selected message */
+.selected {
+  background-color: #d4edda; /* Light green background for selected message */
+  border-color: #c3e6cb; /* Slightly darker green border */
+}
+
+/* Styling for the "Message Deleted" text */
+.message-deleted {
+  color: #6c757d;
+  font-size: 14px;
+  font-style: italic;
+  text-align: center;
+  padding: 10px;
+}
+
+/* Highlight the selected message */
+.highlighted {
+  background-color: lightgreen; /* Highlight selected messages */
+}
+
+/* Style for starred messages */
+.starred {
+  background-color: #ffeb3b; /* Highlight starred messages with yellow */
+  border-left: 5px solid gold; /* Optional, adds a golden left border for starred messages */
+}
+
+

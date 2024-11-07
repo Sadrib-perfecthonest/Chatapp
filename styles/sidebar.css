@@ -63,8 +63,3 @@
   filter: invert(82%) sepia(49%) saturate(1077%) hue-rotate(328deg)
     brightness(103%) contrast(103%);
 }
-.button-filter{
-  background-color: var(--primary);
-  border: none;
-  
-}
