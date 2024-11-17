@@ -96,6 +96,20 @@ main {
   background-color: var(--primary);
     border: none;    
 }
+/* chat window dropdown styles contact info delete chat and block */
+
+.button-contact{
+  background-color: var(--primary);
+    border: none;    
+}
+.button-Delete-chat{
+  background-color: var(--primary);
+    border: none;    
+}
+.button-block{
+  background-color: var(--primary);
+    border: none;    
+}
 
 /* Styling for the selected message */
 .selected {

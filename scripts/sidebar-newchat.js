@@ -244,9 +244,7 @@ const newChatButton = document.querySelector(".button-new-chat");
 
 if (newChatButton) {
   newChatButton.addEventListener("click", function () {
-    popupContainer.style.display = 'block';
-    userNameInput.focus();
-
+    
     const chatNameInput = document.createElement("input");
     chatNameInput.type = "text";
     chatNameInput.placeholder = "Enter chat name";
