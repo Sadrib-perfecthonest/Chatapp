@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Create modal content
     const modalContent = document.createElement("div");
     Object.assign(modalContent.style, {
-        backgroundColor: "#fefefe",
+        backgroundColor: " var(--primary)",
         borderRadius: "10px",
         padding: "20px",
         width: "50%",
@@ -53,22 +53,13 @@ document.addEventListener("DOMContentLoaded", () => {
         closeButton.style.color = "#aaa";
     });
 
-    // Contact details (initial content, will be dynamically updated)
+    // Contact details (simplified content)
     const contactDetails = `
     <h2>Contact Info</h2>
     <div class="contact-details">
         <img src="" alt="User Picture" class="user-image" style="width: 150px; height: 150px; border-radius: 50%; margin-bottom: 15px; object-fit: cover;">
-        <p><strong>Name:</strong> <span class="user-name">John Doe</span></p>
-        <p><strong>Bio:</strong> <span class="user-bio">A tech enthusiast who loves coding.</span> <button class="edit-bio"><i class="fa fa-pencil"></i> Edit</button></p>
-        <p><strong>Hobby:</strong> <span class="user-hobby">Hiking and photography</span> <button class="edit-hobby"><i class="fa fa-pencil"></i> Edit</button></p>
-    </div>
-   
-    <div class="edit-info" style="display:none;">
-        <label for="edit-bio">Bio:</label>
-        <textarea id="edit-bio" class="edit-bio" rows="4" cols="30" style="display:none;"></textarea><br>
-        <label for="edit-hobby">Hobby:</label>
-        <input type="text" id="edit-hobby" class="edit-hobby" style="display:none;" /><br>
-        <button class="save-changes">Save Changes</button>
+        <p><strong>Username:</strong> <span class="user-name">John Doe</span></p>
+        <p><strong>Email:</strong> <span class="user-email">example@domain.com</span></p>
     </div>
     <div class="security-info">
         <h3>Security</h3>
@@ -98,8 +89,7 @@ document.addEventListener("DOMContentLoaded", () => {
             selectedUser = {
                 image: tile.querySelector(".chat-tile-avatar").src,
                 name: tile.querySelector(".chat-tile-title span").textContent,
-                bio: tile.querySelector(".chat-tile-bio") ? tile.querySelector(".chat-tile-bio").textContent : "No bio available",
-                hobby: tile.querySelector(".chat-tile-hobby") ? tile.querySelector(".chat-tile-hobby").textContent : "Not specified",
+                email: "placeholder@domain.com", // Placeholder for email until backend integration
             };
         });
     });
@@ -110,72 +100,17 @@ document.addEventListener("DOMContentLoaded", () => {
             // Update the modal with the selected user's info
             const userImageElement = contactModal.querySelector(".user-image");
             const userNameElement = contactModal.querySelector(".user-name");
-            const userBioElement = contactModal.querySelector(".user-bio");
-            const userHobbyElement = contactModal.querySelector(".user-hobby");
+            const userEmailElement = contactModal.querySelector(".user-email");
 
             userImageElement.src = selectedUser.image;
             userNameElement.textContent = selectedUser.name;
-            userBioElement.textContent = selectedUser.bio;
-            userHobbyElement.textContent = selectedUser.hobby;
-
-            // Set the input fields with current user data
-            document.querySelector("#edit-bio").value = selectedUser.bio;
-            document.querySelector("#edit-hobby").value = selectedUser.hobby;
+            userEmailElement.textContent = selectedUser.email;
 
             // Display the modal
             contactModal.style.display = "flex";
         } else {
             alert("Please select a user first.");
         }
-    });
-
-    // Edit Bio Button
-    const editBioButton = contactModal.querySelector(".edit-bio");
-    editBioButton.addEventListener("click", () => {
-        document.querySelector(".user-bio").style.display = "none";
-        document.querySelector("#edit-bio").style.display = "block";
-        document.querySelector("#edit-bio").focus();
-        document.querySelector(".edit-info").style.display = "block";
-    });
-
-    // Edit Hobby Button
-    const editHobbyButton = contactModal.querySelector(".edit-hobby");
-    editHobbyButton.addEventListener("click", () => {
-        document.querySelector(".user-hobby").style.display = "none";
-        document.querySelector("#edit-hobby").style.display = "block";
-        document.querySelector("#edit-hobby").focus();
-        document.querySelector(".edit-info").style.display = "block";
-    });
-
-    // Save changes (edit bio and hobby) when "Save Changes" button is clicked
-    const saveChangesButton = contactModal.querySelector(".save-changes");
-    saveChangesButton.addEventListener("click", () => {
-        const updatedBio = document.querySelector("#edit-bio").value;
-        const updatedHobby = document.querySelector("#edit-hobby").value;
-
-        // Update the modal content
-        const userBioElement = contactModal.querySelector(".user-bio");
-        const userHobbyElement = contactModal.querySelector(".user-hobby");
-
-        userBioElement.textContent = updatedBio;
-        userHobbyElement.textContent = updatedHobby;
-
-        // Update the selected user info (you can save this information as needed)
-        selectedUser.bio = updatedBio;
-        selectedUser.hobby = updatedHobby;
-
-        alert("Changes saved!");
-
-        // Optionally, clear the input fields after saving
-        document.querySelector("#edit-bio").value = "";
-        document.querySelector("#edit-hobby").value = "";
-
-        // Hide text areas and show updated text
-        document.querySelector("#edit-bio").style.display = "none";
-        document.querySelector("#edit-hobby").style.display = "none";
-        document.querySelector(".user-bio").style.display = "block";
-        document.querySelector(".user-hobby").style.display = "block";
-        document.querySelector(".edit-info").style.display = "none";
     });
 
     // Close modal when close button is clicked

@@ -17,13 +17,26 @@ let chats = {
     ]
 };
 
-// Function to display chat messages in the chat window
+// Function to load chat messages with datestamp integration
 function loadChatMessages(chatName) {
     const chatWindow = document.getElementById("chat-window-contents");
     chatWindow.innerHTML = ""; // Clear existing messages
 
     if (chats[chatName]) {
+        let lastDate = null;
+
         chats[chatName].forEach(chat => {
+            // Create a datestamp if the message date changes
+            const messageDate = new Date().toLocaleDateString();
+            if (lastDate !== messageDate) {
+                const dateSeparator = document.createElement("div");
+                dateSeparator.classList.add("chat-date-separator");
+                dateSeparator.innerText = messageDate;
+                chatWindow.appendChild(dateSeparator);
+                lastDate = messageDate;
+            }
+
+            // Create message group
             const chatMessageGroup = document.createElement("div");
             chatMessageGroup.classList.add("chat-message-group");
             chatMessageGroup.innerHTML = `
@@ -42,7 +55,6 @@ function loadChatMessages(chatName) {
         chatWindow.innerHTML = "<p>No messages in this chat.</p>";
     }
 }
-
 // Event listener for Delete Chat button
 document.querySelector(".button-Delete-chat").addEventListener("click", () => {
     const activeChatDetails = document.getElementById("active-chat-details");
@@ -58,7 +70,7 @@ document.querySelector(".button-Delete-chat").addEventListener("click", () => {
     }
 });
 
-// Function to send a message
+// Function to send a message (with current date integration)
 function sendMessage() {
     const messageInput = document.getElementById("compose-chat-box");
     const messageText = messageInput.value.trim();
@@ -66,7 +78,6 @@ function sendMessage() {
     const activeChatName = activeChatDetails.querySelector("h3").innerText.trim();
 
     if (!messageText) {
-        
         return;
     }
 
@@ -74,11 +85,16 @@ function sendMessage() {
     if (!chats[activeChatName]) {
         chats[activeChatName] = []; // Initialize chat if it doesn't exist
     }
-    const currentTime = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+
+    const currentDate = new Date();
+    const currentTime = currentDate.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+    const currentDateString = currentDate.toLocaleDateString();
+
     chats[activeChatName].push({
         sender: "You",
         message: messageText,
         time: currentTime,
+        date: currentDateString,
         avatar: "https://picsum.photos/id/101/50" // Replace with your avatar
     });
 
@@ -91,13 +107,31 @@ function sendMessage() {
         const chatName = chatTile.querySelector(".chat-tile-title span").innerText.trim();
         if (chatName === activeChatName) {
             const subtitle = chatTile.querySelector(".chat-tile-subtitle span");
-            subtitle.innerText = `You: ${messageText}`; // Update subtitle with latest message
+            subtitle.innerText = `You: ${messageText}`; // Update subtitle with the latest message
         }
     });
 
     // Clear the input box
     messageInput.value = "";
 }
+
+// Optional: Styling for the datestamp (via JS)
+const style = document.createElement("style");
+style.innerText = `
+    .chat-date-separator {
+        text-align: center;
+        font-size: 0.9em;
+        color: gray;
+        margin: 10px 0;
+    }
+    #chat-window-contents {
+        padding: 10px;
+    }
+    .chat-message-group {
+        margin-bottom: 15px;
+    }
+`;
+document.head.appendChild(style);
 
 // Event listener for the Send button
 document.querySelector(".button-send").addEventListener("click", sendMessage);

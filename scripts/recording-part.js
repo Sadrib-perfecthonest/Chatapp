@@ -30,7 +30,7 @@ function startRecording() {
             mediaRecorder.onstop = () => {
                 const audioBlob = new Blob(audioChunks, { type: 'audio/wav' });
                 const audioUrl = URL.createObjectURL(audioBlob);
-                sendMessage(audioUrl);
+                addAudioMessageToChat(audioUrl);
                 audioChunks = [];
                 isRecording = false;
                 document.getElementById('recording-time').remove();
@@ -47,7 +47,7 @@ function startRecording() {
                 clearInterval(timerInterval);
                 const audioBlob = new Blob(audioChunks, { type: 'audio/wav' });
                 const audioUrl = URL.createObjectURL(audioBlob);
-                sendMessage(audioUrl);
+                addAudioMessageToChat(audioUrl);
                 audioChunks = [];
                 isRecording = false;
                 document.getElementById('recording-time').remove();
@@ -59,18 +59,37 @@ function stopRecording() {
     mediaRecorder.stop();
 }
 
-// Function to send a message or audio
-function sendMessage(audioUrl = null) {
-    const messageInput = document.getElementById('compose-chat-box');
-    const message = messageInput.value.trim();
+// Function to add audio message to the chat window
+function addAudioMessageToChat(audioUrl) {
     const chatWindowContents = document.getElementById('chat-window-contents');
+    const messageGroup = document.createElement('div');
+    messageGroup.classList.add('chat-message-group');
 
-    if (audioUrl) {
-        const audioMessage = `<audio controls src="${audioUrl}"></audio>`;
-        chatWindowContents.innerHTML += `<div class="chat-message">${audioMessage}</div>`;
-    } else if (message) {
-        chatWindowContents.innerHTML += `<div class="chat-message">${message}</div>`;
-        messageInput.value = ''; // Clear input
-    }
+    const avatar = document.createElement('img');
+    avatar.src = 'https://picsum.photos/50'; // Replace with actual avatar source
+    avatar.alt = 'Avatar';
+    avatar.classList.add('chat-message-avatar');
+
+    const messagesContainer = document.createElement('div');
+    messagesContainer.classList.add('chat-messages');
+
+    const messageContainer = document.createElement('div');
+    messageContainer.classList.add('chat-message-container');
+
+    const audioElement = document.createElement('audio');
+    audioElement.controls = true;
+    audioElement.src = audioUrl;
+
+    const message = document.createElement('div');
+    message.classList.add('chat-message');
+    message.appendChild(audioElement);
+
+    messageContainer.appendChild(message);
+    messagesContainer.appendChild(messageContainer);
+    messageGroup.appendChild(avatar);
+    messageGroup.appendChild(messagesContainer);
+    chatWindowContents.appendChild(messageGroup);
+
+    // Scroll to the latest message
+    chatWindowContents.scrollTop = chatWindowContents.scrollHeight;
 }
-
