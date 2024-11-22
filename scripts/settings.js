@@ -129,7 +129,7 @@ function simulateIncomingMessage() {
     }
 }
 // Example: simulate incoming message every 10 seconds
-setInterval(simulateIncomingMessage, 10000);
+setInterval(simulateIncomingMessage, 400000);
 
     // Privacy Settings Popup
     function openPrivacySettings() {
