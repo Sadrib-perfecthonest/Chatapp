@@ -1,13 +1,15 @@
 document.addEventListener('DOMContentLoaded', function () {
     let sendSoundEnabled = true; // Default: send sound enabled
     let receiveSoundEnabled = true; // Default: receive sound enabled
+    const sendSoundPath = 'file:///D:/East%20Delta%20University/7th%20semester/Chat%20App/Audio/happy-pop-3-185288.mp3'; // Path for the send sound
+    const receiveSoundPath = 'file:///D:/East%20Delta%20University/7th%20semester/Chat%20App/Audio/happy-pop-3-185288.mp3'; // Path for the receive sound
 
     // Function to play a sound
     function playSound(url) {
         const audio = new Audio(url);
-        audio.play();
+        audio.play().catch(error => console.error('Error playing sound:', error));
     }
-
+    
     // Utility function to show sub pop-ups
     function showPopup(content, backFunction) {
         const existingPopup = document.getElementById('settings-popup') || document.getElementById('sub-popup');
@@ -33,7 +35,7 @@ document.addEventListener('DOMContentLoaded', function () {
             left: 50%;
             transform: translate(-50%, -50%);
             width: 300px;
-            background-color: white;
+            background-color: var(--primary);
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
             border-radius: 8px;
             padding: 20px;
@@ -81,33 +83,53 @@ document.addEventListener('DOMContentLoaded', function () {
         `, createSettingsPopup);
     }
 
-    // Notification Settings Popup
-    function openNotificationSettings() {
-        showPopup(`
-            <h2>Notifications</h2>
-            <form>
-                <label>
-                    <input type="checkbox" id="send-sound" ${sendSoundEnabled ? 'checked' : ''}/>
-                    Sound While Sending Messages
-                </label><br>
-                <label>
-                    <input type="checkbox" id="receive-sound" ${receiveSoundEnabled ? 'checked' : ''}/>
-                    Sound for Incoming Messages
-                </label>
-            </form>
-            <button id="back-to-settings" style="margin-top: 10px; padding: 5px 10px;">Back</button>
-        `, createSettingsPopup);
+     // Notification Settings Popup
+  // Notification Settings Popup
+  function openNotificationSettings() {
+    showPopup(`
+        <h2>Notifications</h2>
+        <form>
+            <label>
+                <input type="checkbox" id="send-sound" ${sendSoundEnabled ? 'checked' : ''}/>
+                Sound While Sending Messages
+            </label><br>
+            <label>
+                <input type="checkbox" id="receive-sound" ${receiveSoundEnabled ? 'checked' : ''}/>
+                Sound for Incoming Messages
+            </label>
+        </form>
+        <button id="back-to-settings" style="margin-top: 10px; padding: 5px 10px;">Back</button>
+    `, createSettingsPopup);
 
-        document.getElementById('send-sound').addEventListener('change', function () {
-            sendSoundEnabled = this.checked;
-            alert(`Send sound ${sendSoundEnabled ? 'enabled' : 'disabled'}`);
-        });
+    document.getElementById('send-sound').addEventListener('change', function () {
+        sendSoundEnabled = this.checked;
+        
+    });
 
-        document.getElementById('receive-sound').addEventListener('change', function () {
-            receiveSoundEnabled = this.checked;
-            alert(`Receive sound ${receiveSoundEnabled ? 'enabled' : 'disabled'}`);
-        });
+    document.getElementById('receive-sound').addEventListener('change', function () {
+        receiveSoundEnabled = this.checked;
+        
+    });
+}
+
+// Attach event listener to the "Settings" button
+document.querySelector('.button-settings').addEventListener('click', createSettingsPopup);
+
+// Add event listener to the send button for sound playback
+document.querySelector('.button-send').addEventListener('click', function () {
+    if (sendSoundEnabled) {
+        playSound(sendSoundPath);
     }
+});
+
+// Simulating incoming messages for sound demonstration
+function simulateIncomingMessage() {
+    if (receiveSoundEnabled) {
+        playSound(receiveSoundPath);
+    }
+}
+// Example: simulate incoming message every 10 seconds
+setInterval(simulateIncomingMessage, 10000);
 
     // Privacy Settings Popup
     function openPrivacySettings() {
