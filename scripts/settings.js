@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', function () {
         popup.id = 'settings-popup';
         popup.style = getPopupStyle();
         popup.innerHTML = `
-            <h2>Settings</h2>
+            <h2 style="color: white;">Settings</h2>
             <ul style="list-style-type: none; padding: 0;">
                 <li><button class="settings-option" id="account-btn">Account</button></li>
                 <li><button class="settings-option" id="notifications-btn">Notifications</button></li>
@@ -71,12 +71,12 @@ document.addEventListener('DOMContentLoaded', function () {
     // Account Settings Popup
     function openAccountSettings() {
         showPopup(`
-            <h2>Account Settings</h2>
+            <h2 style="color: white;">Account Settings</h2>
             <form>
-                <label for="username">Change Username:</label>
+                <label for="username" style="color: white;">Change Username:</label>
                 <input type="text" id="username" placeholder="Enter new username" style="width: 90%; margin-bottom: 10px;">
-                <label for="profile-picture">Change Profile Picture:</label>
-                <input type="file" id="profile-picture" accept="image/*" style="width: 90%; margin-bottom: 10px;">
+                <label for="profile-picture" style="color: white;">Change Profile Picture:</label>
+                <input type="file" id="profile-picture" accept="image/*" style="width: 90%; margin-bottom: 10px; color: white;" >
                 <button type="button" style="margin: 10px;">Save Changes</button>
             </form>
             <button id="back-to-settings" style="margin-top: 10px; padding: 5px 10px;">Back</button>
@@ -87,13 +87,13 @@ document.addEventListener('DOMContentLoaded', function () {
   // Notification Settings Popup
   function openNotificationSettings() {
     showPopup(`
-        <h2>Notifications</h2>
+        <h2 style="color: white;">Notifications</h2>
         <form>
-            <label>
+            <label style="color: white;">
                 <input type="checkbox" id="send-sound" ${sendSoundEnabled ? 'checked' : ''}/>
                 Sound While Sending Messages
             </label><br>
-            <label>
+            <label style="color: white;">
                 <input type="checkbox" id="receive-sound" ${receiveSoundEnabled ? 'checked' : ''}/>
                 Sound for Incoming Messages
             </label>
@@ -134,7 +134,7 @@ setInterval(simulateIncomingMessage, 400000);
     // Privacy Settings Popup
     function openPrivacySettings() {
         showPopup(`
-            <h2>Privacy Settings</h2>
+            <h2 style="color: white;">Privacy Settings</h2>
             <ul style="list-style-type: none; padding: 0;">
                 <li><button class="settings-option" id="profile-photo-btn">Profile Photo</button></li>
                 <li><button class="settings-option" id="blocked-contacts-btn">Blocked Contacts</button></li>
@@ -151,17 +151,17 @@ setInterval(simulateIncomingMessage, 400000);
         let privacySetting = 'Public';
     
         showPopup(`
-            <h2>Profile Photo</h2>
+            <h2 style="color: white;">Profile Photo</h2>
             <form>
-                <label>
+                <label style="color: white;">
                     <input type="radio" name="privacy" value="Public" ${privacySetting === 'Public' ? 'checked' : ''} />
                     Public
                 </label><br>
-                <label>
+                <label style="color: white;">
                     <input type="radio" name="privacy" value="Only Me" ${privacySetting === 'Only Me' ? 'checked' : ''} />
                     Only Me
                 </label><br>
-                <label>
+                <label style="color: white;">
                     <input type="radio" name="privacy" value="Private" ${privacySetting === 'Private' ? 'checked' : ''} />
                     Private
                 </label>
@@ -184,9 +184,9 @@ setInterval(simulateIncomingMessage, 400000);
         const listItems = blockedContacts.map(contact => `<li>${contact} <button class="unblock" data-contact="${contact}">Unblock</button></li>`).join('');
     
         showPopup(`
-            <h2>Blocked Contacts</h2>
-            <ul id="blocked-contacts-list" style="list-style-type: none; padding: 0;">
-                ${listItems || '<li>No blocked contacts</li>'}
+            <h2 style="color: white;">Blocked Contacts</h2>
+            <ul id="blocked-contacts-list" style="list-style-type: none; padding: 0;color: white;">
+                ${listItems || '<li style="color: white;">No blocked contacts</li>'}
             </ul>
             <button id="back-to-settings" style="margin-top: 10px; padding: 5px 10px;">Back</button>
         `, openPrivacySettings);
@@ -204,9 +204,12 @@ setInterval(simulateIncomingMessage, 400000);
     // Help & Support Popup
     function openHelpSupport() {
         showPopup(`
-            <h2>Help & Support</h2>
-            <ul style="list-style-type: none; text-align: left;">
-                <li><strong>Start a chat:</strong> Click "New Chat".</li>
+             <h2 style="color: white;">Help & Support</h2>
+            <ul style="list-style-type: none; text-align: left;color: white;">
+                 <li><strong>Start a new chat :</strong> Click 💬.</li>
+                <li><strong>Start a community :</strong> Click "New community".</li>
+                <li><strong>To select anything :</strong> Click "Select chat".</li>
+                <li><strong>Any message wants to pin yellow line appear :</strong> Click "Starred message".</li>
                 <li><strong>Customize:</strong> Update profile under "Account".</li>
                 <li><strong>Notifications:</strong> Manage settings in "Notifications".</li>
             </ul>

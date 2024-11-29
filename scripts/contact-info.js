@@ -55,15 +55,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Contact details (simplified content)
     const contactDetails = `
-    <h2>Contact Info</h2>
+    <h2 style="color: white;">Contact Info</h2>
     <div class="contact-details">
         <img src="" alt="User Picture" class="user-image" style="width: 150px; height: 150px; border-radius: 50%; margin-bottom: 15px; object-fit: cover;">
-        <p><strong>Username:</strong> <span class="user-name">John Doe</span></p>
-        <p><strong>Email:</strong> <span class="user-email">example@domain.com</span></p>
+        <p style="color: white;"><strong>Username:</strong> <span class="user-name">John Doe</span></p>
+        <p style="color: white;"><strong>Email:</strong> <span class="user-email">example@domain.com</span></p>
     </div>
     <div class="security-info">
-        <h3>Security</h3>
-        <p>Your messages are encrypted for your safety.</p>
+        <h3 style="color: white;">Security</h3>
+        <p style="color: white;">Your messages are encrypted for your safety.</p>
     </div>
     `;
 

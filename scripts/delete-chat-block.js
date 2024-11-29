@@ -52,7 +52,7 @@ function loadChatMessages(chatName) {
             chatWindow.appendChild(chatMessageGroup);
         });
     } else {
-        chatWindow.innerHTML = "<p>No messages in this chat.</p>";
+        chatWindow.innerHTML = "<p style='color: white;'>No messages in this chat.</p>";
     }
 }
 // Event listener for Delete Chat button

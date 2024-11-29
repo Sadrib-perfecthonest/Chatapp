@@ -24,11 +24,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
     popupContainer.innerHTML = `
         <div class="popup-content">
-            <h3 style="margin-bottom: 10px;">Create New Community</h3>
-            <label for="community-name">Community Name:</label>
+            <h3 style="margin-bottom: 10px; color: white;">Create New Community</h3>
+            <label for="community-name" style="color: white;">Community Name:</label>
             <input type="text" id="community-name" placeholder="Enter community name" style="width: 100%; margin-bottom: 10px; padding: 5px; ">
 
-            <label for="community-interest">Community Interest:</label>
+            <label for="community-interest" style="color: white;">Community Interest:</label>
             <select id="community-interest" style="width: 100%; margin-bottom: 10px; padding: 5px;">
                 <option value="Study">Study</option>
                 <option value="Cook">Cook</option>
@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 <option value="Personal">Personal</option>
             </select>
 
-            <h4 style="margin-bottom: 10px;">Add Members:</h4>
+            <h4 style="margin-bottom: 10px; color: white;">Add Members:</h4>
             <div id="community-members" style="margin-bottom: 10px;"></div>
 
             <button id="create-community" style="margin-right: 10px; padding: 5px 10px; border: none; background-color: #007bff; color: white; border-radius: 5px; cursor: pointer;">Create</button>
@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
             userTile.innerHTML = `
                 <img src="${avatar}" alt="Avatar" style="width: 30px; height: 30px; border-radius: 50%; margin-right: 10px;">
-                <span style="flex-grow: 1;">${name}</span>
+                <span style="flex-grow: 1;color: white;">${name}</span>
                 <input type="checkbox" class="add-user-checkbox">
             `;
             membersContainer.appendChild(userTile);
